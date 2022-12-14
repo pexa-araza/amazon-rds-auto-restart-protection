@@ -21,9 +21,9 @@ def lambda_handler(event, context):
     sourceType = event['sourceType']
     
     #Stop RDS instance
-    if sourceType.lower() == 'cluster':
+    if sourceType.lower() == 'db-cluster':
         rdsClient.stop_db_cluster(DBClusterIdentifier=resourceId)    
-    elif sourceType.lower() == 'db_instance':
+    elif sourceType.lower() == 'db-instance':
         rdsClient.stop_db_instance(DBInstanceIdentifier=resourceId)
     
     
