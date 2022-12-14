@@ -21,9 +21,9 @@ def lambda_handler(event, context):
     resourceId = event['rdsInstanceId']
     sourceType = event['sourceType']
 
-    if sourceType.lower() == 'cluster':
+    if sourceType.lower() == 'db-cluster':
         db_state= rdsClient.describe_db_clusters(DBClusterIdentifier=resourceId)['DBClusters'][0]['Status']    
-    elif sourceType.lower() == 'db_instance':
+    elif sourceType.lower() == 'db-instance':
         db_state = rdsClient.describe_db_instances(DBInstanceIdentifier=resourceId)['DBInstances'][0]['DBInstanceStatus']
 
     return {
